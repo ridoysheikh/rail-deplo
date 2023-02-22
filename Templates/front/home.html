@@ -1,0 +1,35 @@
+{% extends 'front/navs.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/front/home.css' %}">
+<style>
+</style>
+{% endblock  %}
+{% block front %}
+<!--BG Wrapper-->
+<div class="bg_container"></div>
+
+<!--Main Content-->
+<div class="main_container rflex rcolumn rcenter">
+    <div class="rflex rcolumn text_section">
+        <!--Topp Texts-->
+        <div class="marg helo_txt">Hello, I am</div>
+        <div class="mname marg">{{ navs.nv_title|upper }}</div>
+        <div class="rflex rrow">
+            <div class="profs marg" id="proff"></div>
+            <div class="marg vl"></div>
+        </div>
+        <!--All Social Links-->
+        <div class="rflex rrow social_link_tab">
+            {% for x in social %}
+            <div class="sc_item">
+                <a href="{{ x.links }}" title="{{ x.name }}"><img class="sc_image" src="/media/{{ x.logo_img }}" alt=""></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/front/main.js' %}"></script>
+
+{% endblock  %}
+

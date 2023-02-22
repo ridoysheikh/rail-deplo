@@ -1,0 +1,91 @@
+{% extends 'front/navs.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/front/resume.css' %}">
+    <script src="{% static 'js/front/resume.js' %}"></script>
+{% endblock  %}
+
+{% block front %}
+<!-- Main Container Start -->
+<div class="item_container rflex rcolumn">
+
+
+    <!--Education Start-->
+    <!--Section Title-->
+    <div class="res_tagline rflex rcenter">
+        <p class="tag_text">EDUCATION & EXPERTISE</p>
+    </div>
+    <!-- Main Content Of EDUCATION & EXPERICENCE start-->
+    <div class="rflex rrow edu_wrapper">
+        
+        {% for x in edu %}
+             <!--Item Containers Start-->
+        <div class="edu_container rflex rcolumn">
+            <p>{{ x.name }}</p>
+            <!-- single Item Containers Start-->
+            {% for y in x.educations_set.all %}
+            
+                <div class="items_container rflex rrow">
+                    <div class="hory_line">
+                        <span class="line-rodio material-symbols-outlined">
+                            radio_button_checked
+                        </span>
+                    </div>
+                    <div class="rcolumn">
+                        <p class="cont_title">{{ y.title }}</p>
+                        <div class="item_institute rflex rrow">
+                            <p>{{ y.institute }} | &nbsp</p>
+                            <p>{{ y.start_year }} - {{ y.end_year }}</p>
+                        </div>
+                        <p class="cont_details">{{ y.description }}</p>
+                    </div>
+                </div>
+           
+            {% endfor %}
+             <!-- single Item Containers end-->
+        </div>
+        <!--Item Containers end-->
+        {% endfor %}
+    </div>
+    <!-- Main Content Of EDUCATION & EXPERICENCE end-->
+    <!--Education end-->
+
+    <!--Skill Start-->
+    <!--Section Title-->
+    <div class="res_tagline rflex rcenter">
+        <p class="tag_text">SKILLS</p>
+    </div>
+    <!-- Main Content Of EDUCATION & EXPERICENCE start-->
+    <div class="rflex rrow edu_wrapper">
+    
+        <!--Item Containers Start-->
+        {% for x in skill %}
+        <div class="edu_container rflex rcolumn">
+            <p>{{ x.name }}</p>
+            <!-- single Item Containers Start-->
+            {% for y in x.skills_set.all %}
+            <div class="items_container_sk rflex rcolumn">
+                <div class="rflex rrow sk_h">
+                    <p class="sk_h_tag">{{ y.title|upper }}</p>
+                    <p class="sk_h_prog">{{ y.proggress}} %</p>
+                </div>
+                <div class="progg_bg">
+                    <div class="progg_fr" style="width: {{ y.proggress}}%;"></div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- single Item Containers end-->
+        </div>
+        {% endfor %}
+        <!--Item Containers end-->
+
+
+    </div>
+    <!-- Main Content Of EDUCATION & EXPERICENCE end-->
+    <!--Skill end-->
+
+
+</div>
+<!-- Main Container end -->
+
+{% endblock  %}
