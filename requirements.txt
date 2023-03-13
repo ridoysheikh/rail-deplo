@@ -3,7 +3,8 @@ Django
 django-cleanup
 geographiclib
 geopy
-gunicorn
 Pillow
 secure-smtplib
 sqlparse
+sqlite3
+gunicorn
